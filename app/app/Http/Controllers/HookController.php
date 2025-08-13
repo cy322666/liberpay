@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Event;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Artisan;
+use Telegram\Bot\Laravel\Facades\Telegram;
 
 class HookController extends Controller
 {
@@ -30,5 +31,18 @@ class HookController extends Controller
             ]);
 
         Artisan::call('app:event-stage-sale', ['event_id' => $event->id]);
+    }
+
+    public function telegram(Request $request): void
+    {
+        $update = Telegram::commandsHandler(true);
+
+        $message = $update->getMessage();
+        $chat_id = $message->getChat()->getId();
+
+        Telegram::sendMessage([
+            'chat_id' => $chat_id,
+            'text' => 'Hello!'
+        ]);
     }
 }
