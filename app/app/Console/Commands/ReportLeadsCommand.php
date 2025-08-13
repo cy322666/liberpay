@@ -4,6 +4,7 @@ namespace App\Console\Commands;
 
 use App\Models\Event;
 use App\Models\Staff;
+use Carbon\Carbon;
 use Illuminate\Console\Command;
 
 class ReportLeadsCommand extends \Telegram\Bot\Commands\Command
@@ -29,7 +30,7 @@ class ReportLeadsCommand extends \Telegram\Bot\Commands\Command
 
     private static function text() : string
     {
-        $text = '';
+        $text = 'Отчет по лидам (неделя/день)';
 
         $staffs = Staff::query()
             ->where('group_id', static::$group_leads)
@@ -38,11 +39,17 @@ class ReportLeadsCommand extends \Telegram\Bot\Commands\Command
 
         foreach ($staffs as $staff) {
 
-            $count = Event::query()
+            $countWeek = Event::query()
+                ->whereBetween('created_at', [Carbon::now()->subDays(7), Carbon::now()])
                 ->where('responsible_id', $staff->staff_id)
                 ->count();
 
-            $text .= $staff->name.' : '.$count.PHP_EOL;
+            $countDay = Event::query()
+                ->whereDate('created_at', Carbon::today())
+                ->where('responsible_id', $staff->staff_id)
+                ->count();
+
+            $text .= $staff->name.' : '.$countWeek.'/'.$countDay.PHP_EOL;
         }
 
         return $text;
