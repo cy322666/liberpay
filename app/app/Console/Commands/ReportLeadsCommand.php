@@ -30,7 +30,7 @@ class ReportLeadsCommand extends \Telegram\Bot\Commands\Command
 
     private static function text() : string
     {
-        $text = 'Отчет по лидам (д/н/м)'.PHP_EOL.PHP_EOL;
+        $text = 'Отчет по лидам (д | н | м)'.PHP_EOL.PHP_EOL;
 
         $staffs = Staff::query()
             ->where('group_id', static::$group_leads)
@@ -55,7 +55,7 @@ class ReportLeadsCommand extends \Telegram\Bot\Commands\Command
                 ->where('responsible_id', $staff->staff_id)
                 ->count();
 
-            $text .= $staff->name.' : '.$countDay.'/'.$countWeek.'/'.$countMonth.PHP_EOL;
+            $text .= $staff->name.' : '.$countDay.' | '.$countWeek.' | '.$countMonth.PHP_EOL;
         }
 
         return $text;
