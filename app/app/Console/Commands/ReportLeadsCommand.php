@@ -13,9 +13,9 @@ class ReportLeadsCommand extends \Telegram\Bot\Commands\Command
      *
      * @var string
      */
-    protected string $signature = 'app:report-leads-command';
+    protected string $signature = 'reportleads';
 
-    protected string $name = 'report';
+    protected string $name = 'reportleads';
     protected string $description = 'Отчет по лидам';
 
     public function handle(): void

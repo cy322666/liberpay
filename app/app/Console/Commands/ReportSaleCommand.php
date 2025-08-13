@@ -13,9 +13,9 @@ class ReportSaleCommand extends \Telegram\Bot\Commands\Command
      *
      * @var string
      */
-    protected string $signature = 'app:report-sale-command';
+    protected string $signature = 'reportsales';
 
-    protected string $name = 'report';
+    protected string $name = 'reportsales';
     protected string $description = 'Отчет по менеджерам';
 
     public function handle(): void
