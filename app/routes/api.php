@@ -20,9 +20,9 @@ Log::debug('input', (new Illuminate\Http\Request)->all());
 
 Route::group(['prefix' => 'hooks',], function () {
 
-    Route::post('stage/lead', [HookController::class, 'stageLead']);
+    Route::post('stage/lead', [HookController::class, 'leads']);
 
-    Route::post('stage/sale', [HookController::class, 'stageSale']);
+    Route::post('stage/sale', [HookController::class, 'sales']);
 });
 
 

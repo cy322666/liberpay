@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Artisan;
 class HookController extends Controller
 {
     //лидов взято в работу
-    public function stageLeads(Request $request)
+    public function leads(Request $request): void
     {
         $event = Event::query()
             ->create([
@@ -21,7 +21,7 @@ class HookController extends Controller
     }
 
     //лидов передано в оп
-    public function stageSale(Request $request)
+    public function sales(Request $request): void
     {
         $event = Event::query()
             ->create([
