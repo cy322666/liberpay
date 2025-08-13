@@ -16,7 +16,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Log::debug('input', (new Illuminate\Http\Request)->all());
+Log::debug('input', Request::capture()->toArray());
 
 Route::group(['prefix' => 'hooks',], function () {
 
