@@ -29,9 +29,9 @@ class EventStageSale extends Command
     {
         $client = amoCRM::init();
 
-        $event = Event::query()->$this->argument('event_id');
+        $event = Event::query()->find($this->argument('event_id'));
 
-        $lead = $client->leads()->getOne($this->argument('event_id'));
+        $lead = $client->leads()->getOne($event->lead_id);
 
         foreach ($lead->getCustomFieldsValues() as $customField) {
 
