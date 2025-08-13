@@ -44,7 +44,6 @@ class EventStageLead extends Command
         }
 
         $event->responsible_id = $lead->getResponsibleUserId();
-        $event->responsible_id_tech = $lead->getCustomFieldsValues();
         $event->company_id = $lead->getCompany()?->getId();
         $event->contact_id = $lead->getMainContact()?->getId();
         $event->save();
