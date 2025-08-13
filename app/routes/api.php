@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\HookController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Route;
@@ -17,15 +18,11 @@ use Illuminate\Support\Facades\Route;
 
 Log::debug('input', Request::all());
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
-
 Route::group(['prefix' => 'hooks',], function () {
 
-    Route::post('stage/lead', 'HookController@stageLead');
+    Route::post('stage/lead', [HookController::class, 'stageLead']);
 
-    Route::post('stage/sale', 'HookController@stageSale');
+    Route::post('stage/sale', [HookController::class, 'stageSale']);
 });
 
 
