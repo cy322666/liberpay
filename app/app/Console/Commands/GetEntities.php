@@ -6,6 +6,7 @@ use AmoCRM\Client\AmoCRMApiClient;
 use AmoCRM\Exceptions\AmoCRMApiException;
 use AmoCRM\Exceptions\AmoCRMMissedTokenException;
 use AmoCRM\Exceptions\AmoCRMoAuthApiException;
+use AmoCRM\Filters\BaseEntityFilter;
 use AmoCRM\Models\UserModel;
 use App\Models\Staff;
 use App\Models\User;
@@ -43,15 +44,13 @@ class GetEntities extends Command
         $this->client = amoCRM::init();
 
         try {
-            $users = ($this->client->users())->get();//->get(null, ['group']);
+
+            $users = ($this->client->users())->get(null, ['group', 'role']);
 
             Staff::query()->truncate();
 
             /** @var UserModel $user */
             foreach ($users as $user) {
-
-                if ($user->getRights()->getIsActive() !== true ||
-                    $user->getRights()->getGroupId()  !== 0) continue;
 
                 Staff::query()->updateOrCreate([
                     'staff_id' => $user->getId(),

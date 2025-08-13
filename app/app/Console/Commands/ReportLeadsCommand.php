@@ -18,6 +18,8 @@ class ReportLeadsCommand extends \Telegram\Bot\Commands\Command
     protected string $name = 'reportleads';
     protected string $description = 'Отчет по лидам';
 
+    public static int $group_leads = 642464;
+
     public function handle(): void
     {
         $this->replyWithMessage([
@@ -29,7 +31,10 @@ class ReportLeadsCommand extends \Telegram\Bot\Commands\Command
     {
         $text = '';
 
-        $staffs = Staff::all();
+        $staffs = Staff::query()
+            ->where('group', static::$group_leads)
+            ->where('archived', 0)
+            ->get();
 
         foreach ($staffs as $staff) {
 
