@@ -137,6 +137,8 @@
       <path value="$PROJECT_DIR$/app/vendor/lcobucci/jwt" />
       <path value="$PROJECT_DIR$/app/vendor/lcobucci/clock" />
       <path value="$PROJECT_DIR$/app/vendor/fig/http-message-util" />
+      <path value="$PROJECT_DIR$/app/vendor/league/event" />
+      <path value="$PROJECT_DIR$/app/vendor/irazasyed/telegram-bot-sdk" />
     </include_path>
   </component>
   <component name="PhpProjectSharedConfiguration" php_language_level="8.1" />

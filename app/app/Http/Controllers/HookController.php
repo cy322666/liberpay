@@ -2,8 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Jobs\EventStageLead;
-use App\Jobs\EventStageSale;
 use App\Models\Event;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Artisan;

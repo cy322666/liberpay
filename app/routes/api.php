@@ -18,6 +18,12 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::post('hooks/stage/lead', 'HookController@stageLead');
+Route::group(['hooks' => '/api',], function () {
 
-Route::post('hooks/stage/sale', 'HookController@stageSale');
+    Route::post('stage/lead', 'HookController@stageLead');
+
+    Route::post('stage/sale', 'HookController@stageSale');
+});
+
+
+
