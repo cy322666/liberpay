@@ -18,7 +18,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::group(['hooks' => '/api',], function () {
+Route::group(['prefix' => 'hooks',], function () {
 
     Route::post('stage/lead', 'HookController@stageLead');
 
