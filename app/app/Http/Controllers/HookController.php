@@ -33,8 +33,8 @@ class HookController extends Controller
         Artisan::call('app:event-stage-sale', ['event_id' => $event->id]);
     }
 
-    public function telegram(Request $request): void
+    public function telegram(): void
     {
-        $update = Telegram::commandsHandler(true);
+        Telegram::commandsHandler(true);
     }
 }
