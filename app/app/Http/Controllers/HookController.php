@@ -35,14 +35,6 @@ class HookController extends Controller
 
     public function telegram(Request $request): void
     {
-        $update = Telegram::commandsHandler(true);
-
-        $message = $update->getMessage();
-        $chat_id = $message->getChat()->getId();
-
-        Telegram::sendMessage([
-            'chat_id' => $chat_id,
-            'text' => 'Hello!'
-        ]);
+        Telegram::commandsHandler(true);
     }
 }
