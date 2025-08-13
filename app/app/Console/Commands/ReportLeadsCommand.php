@@ -32,7 +32,7 @@ class ReportLeadsCommand extends \Telegram\Bot\Commands\Command
         $text = '';
 
         $staffs = Staff::query()
-            ->where('group', static::$group_leads)
+            ->where('group_id', static::$group_leads)
             ->where('archived', 0)
             ->get();
 
