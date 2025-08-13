@@ -30,7 +30,7 @@ class ReportLeadsCommand extends \Telegram\Bot\Commands\Command
 
     private static function text() : string
     {
-        $text = 'Отчет по лидам (неделя/день)'.PHP_EOL.PHP_EOL;
+        $text = 'Отчет по лидам (д/н/м)'.PHP_EOL.PHP_EOL;
 
         $staffs = Staff::query()
             ->where('group_id', static::$group_leads)
@@ -38,6 +38,12 @@ class ReportLeadsCommand extends \Telegram\Bot\Commands\Command
             ->get();
 
         foreach ($staffs as $staff) {
+
+            $countMonth = Event::query()
+                ->whereBetween('created_at', [Carbon::now()->subMonth(), Carbon::now()])
+                ->where('responsible_id', $staff->staff_id)
+                ->count();
+
 
             $countWeek = Event::query()
                 ->whereBetween('created_at', [Carbon::now()->subDays(7), Carbon::now()])
@@ -49,7 +55,7 @@ class ReportLeadsCommand extends \Telegram\Bot\Commands\Command
                 ->where('responsible_id', $staff->staff_id)
                 ->count();
 
-            $text .= $staff->name.' : '.$countWeek.'/'.$countDay.PHP_EOL;
+            $text .= $staff->name.' : '.$countDay.'/'.$countWeek.'/'.$countMonth.PHP_EOL;
         }
 
         return $text;
