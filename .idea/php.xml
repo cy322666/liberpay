@@ -139,6 +139,7 @@
       <path value="$PROJECT_DIR$/app/vendor/fig/http-message-util" />
       <path value="$PROJECT_DIR$/app/vendor/league/event" />
       <path value="$PROJECT_DIR$/app/vendor/irazasyed/telegram-bot-sdk" />
+      <path value="$PROJECT_DIR$/app/vendor/laravel/telescope" />
     </include_path>
   </component>
   <component name="PhpProjectSharedConfiguration" php_language_level="8.1" />
