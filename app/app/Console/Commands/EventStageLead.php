@@ -39,7 +39,7 @@ class EventStageLead extends Command
 
             if ($customField->getFieldId() == 955703) {
 
-                $event->responsible_id_tech = $customField->getValue();
+                $event->responsible_id_tech = $customField->getValues()->first();
             }
         }
 
