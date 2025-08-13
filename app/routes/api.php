@@ -24,7 +24,7 @@ Route::group(['prefix' => 'hooks',], function () {
 
     Route::post('stage/sale', [HookController::class, 'sales']);
 
-    Route::post('telegram', 'TelegramController@handle');
+    Route::post('telegram', [HookController::class, 'telegram']);
 });
 
 
