@@ -37,4 +37,30 @@ class HookController extends Controller
     {
         Telegram::commandsHandler(true);
     }
+
+    public function company(Request $request): void
+    {
+        $email = null;
+        $web   = null;
+
+        $fields = $request->contacts['add'][0]['custom_fields'] ?? [];
+
+        foreach ($fields as $field) {
+
+            if ($field['name'] == 'Email') {
+
+                $email = $field['values'][0]['value'];
+            }
+
+            if ($field['name'] == 'Web') {
+
+                $email = $field['values'][0]['value'];
+            }
+        }
+
+        Artisan::call('app:check-company', [
+            'email' => $email,
+            'web'   => $web,
+        ]);
+    }
 }
