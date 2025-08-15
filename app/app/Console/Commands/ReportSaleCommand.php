@@ -17,7 +17,7 @@ class ReportSaleCommand extends \Telegram\Bot\Commands\Command
     protected string $signature = 'reportsales';
 
     protected string $name = 'reportsales';
-    protected string $description = 'Отчет по почтам в работе';
+    protected string $description = 'Отчет по лидам оп';
 
     public static int $group_op = 0;
 

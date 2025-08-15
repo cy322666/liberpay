@@ -9,10 +9,10 @@ use Illuminate\Console\Command;
 
 class ReportDistributionCommand extends \Telegram\Bot\Commands\Command
 {
-    protected string $signature = 'reportDistleads';
+    protected string $signature = 'reportdistleads';
 
-    protected string $name = 'reportDistleads';
-    protected string $description = 'Отчет по переданным лидам';
+    protected string $name = 'reportdistleads';
+    protected string $description = 'Отчет по переданным лидам в оп';
 
     public static int $group_leads = 642464;
 
