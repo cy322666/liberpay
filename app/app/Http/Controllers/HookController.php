@@ -54,13 +54,14 @@ class HookController extends Controller
 
             if ($field['name'] == 'Web') {
 
-                $email = $field['values'][0]['value'];
+                $web = $field['values'][0]['value'];
             }
         }
 
         Artisan::call('app:check-company', [
             'email' => $email,
             'web'   => $web,
+            'companyId' => $request->contacts['add'][0]['id'],
         ]);
     }
 }
