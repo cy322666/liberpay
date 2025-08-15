@@ -7,19 +7,14 @@ use App\Models\Staff;
 use Carbon\Carbon;
 use Illuminate\Console\Command;
 
-class ReportSaleCommand extends \Telegram\Bot\Commands\Command
+class ReportDistributionCommand extends \Telegram\Bot\Commands\Command
 {
-    /**
-     * The name and signature of the console command.
-     *
-     * @var string
-     */
-    protected string $signature = 'reportsales';
+    protected string $signature = 'reportDistleads';
 
-    protected string $name = 'reportsales';
-    protected string $description = 'Отчет по почтам в работе';
+    protected string $name = 'reportDistleads';
+    protected string $description = 'Отчет по переданным лидам';
 
-    public static int $group_op = 0;
+    public static int $group_leads = 642464;
 
     public function handle(): void
     {
@@ -28,10 +23,10 @@ class ReportSaleCommand extends \Telegram\Bot\Commands\Command
 
     private static function text() : string
     {
-        $text = 'Взято в работу (д | н | м)'.PHP_EOL.PHP_EOL;
+        $text = 'Передано лидов (д | н | м)'.PHP_EOL.PHP_EOL;
 
         $staffs = Staff::query()
-            ->where('group_id', static::$group_op)
+            ->where('group_id', static::$group_leads)
             ->where('archived', 0)
             ->get();
 
@@ -39,20 +34,22 @@ class ReportSaleCommand extends \Telegram\Bot\Commands\Command
 
             $countMonth = Event::query()
                 ->whereBetween('created_at', [Carbon::now()->subMonth(), Carbon::now()])
-                ->where('event', 'stage-sale')
-                ->where('responsible_id', $staff->staff_id)
+                ->where('event', 'stage-lead')
+                ->where('responsible_id_tech', $staff->staff_id)
                 ->count();
 
 
             $countWeek = Event::query()
                 ->whereBetween('created_at', [Carbon::now()->subDays(7), Carbon::now()])
-                ->where('event', 'stage-sale')
+                ->where('event', 'stage-lead')
+                ->where('responsible_id_tech', $staff->staff_id)
                 ->where('responsible_id', $staff->staff_id)
                 ->count();
 
             $countDay = Event::query()
                 ->whereDate('created_at', Carbon::today())
-                ->where('event', 'stage-sale')
+                ->where('event', 'stage-lead')
+                ->where('responsible_id_tech', $staff->staff_id)
                 ->where('responsible_id', $staff->staff_id)
                 ->count();
 

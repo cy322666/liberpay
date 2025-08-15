@@ -1,6 +1,7 @@
 <?php
 
 use App\Console\Commands\ReportCommand;
+use App\Console\Commands\ReportDistributionCommand;
 use App\Console\Commands\ReportLeadsCommand;
 use App\Console\Commands\ReportSaleCommand;
 use Telegram\Bot\Commands\HelpCommand;
@@ -44,8 +45,8 @@ return [
             'allowed_updates' => null,
             'commands' => [
                 ReportLeadsCommand::class,
+                ReportDistributionCommand::class,
                 ReportSaleCommand::class,
-                // Acme\Project\Commands\MyTelegramBot\BotCommand::class
             ],
         ],
 

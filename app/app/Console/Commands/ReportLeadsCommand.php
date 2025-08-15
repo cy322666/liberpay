@@ -17,20 +17,18 @@ class ReportLeadsCommand extends \Telegram\Bot\Commands\Command
     protected string $signature = 'reportleads';
 
     protected string $name = 'reportleads';
-    protected string $description = 'Отчет по лидам';
+    protected string $description = 'Отчет по взятым лидам';
 
     public static int $group_leads = 642464;
 
     public function handle(): void
     {
-        $this->replyWithMessage([
-            'text' => static::text(),
-        ]);
+        $this->replyWithMessage(['text' => static::text()]);
     }
 
     private static function text() : string
     {
-        $text = 'Отчет по лидам (д | н | м)'.PHP_EOL.PHP_EOL;
+        $text = 'Взято лидов в работу (д | н | м)'.PHP_EOL.PHP_EOL;
 
         $staffs = Staff::query()
             ->where('group_id', static::$group_leads)
@@ -41,17 +39,20 @@ class ReportLeadsCommand extends \Telegram\Bot\Commands\Command
 
             $countMonth = Event::query()
                 ->whereBetween('created_at', [Carbon::now()->subMonth(), Carbon::now()])
+                ->where('event', 'stage-lead')
                 ->where('responsible_id', $staff->staff_id)
                 ->count();
 
 
             $countWeek = Event::query()
                 ->whereBetween('created_at', [Carbon::now()->subDays(7), Carbon::now()])
+                ->where('event', 'stage-lead')
                 ->where('responsible_id', $staff->staff_id)
                 ->count();
 
             $countDay = Event::query()
                 ->whereDate('created_at', Carbon::today())
+                ->where('event', 'stage-lead')
                 ->where('responsible_id', $staff->staff_id)
                 ->count();
 
