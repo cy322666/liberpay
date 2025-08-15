@@ -19,7 +19,7 @@ class ReportSaleCommand extends \Telegram\Bot\Commands\Command
     protected string $name = 'reportsales';
     protected string $description = 'Отчет по лидам оп';
 
-    public static int $group_op = 0;
+    public static int $group_op = 642468;
 
     public function handle(): void
     {
