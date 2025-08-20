@@ -31,6 +31,9 @@ class CheckCompany extends Command
         'kanzleischroeder-kiel.de',
         'gruenlaw.de',
         'start100.de',
+        'info@kanzlei.biz',
+        'kontakt@jungepflanzen.de',
+        'mail@maxhealth.de',
     ];
     /**
      * Execute the console command.
