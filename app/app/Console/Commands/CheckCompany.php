@@ -34,6 +34,7 @@ class CheckCompany extends Command
         'info@kanzlei.biz',
         'kontakt@jungepflanzen.de',
         'mail@maxhealth.de',
+        'abimanufaktur.de',
     ];
     /**
      * Execute the console command.
