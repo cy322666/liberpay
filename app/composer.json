@@ -12,7 +12,8 @@
         "laravel/framework": "^10.10",
         "laravel/sanctum": "^3.3",
         "laravel/telescope": "^5.11",
-        "laravel/tinker": "^2.8"
+        "laravel/tinker": "^2.8",
+        "zadarma/user-api-v1": "^1.1"
     },
     "require-dev": {
         "fakerphp/faker": "^1.9.1",

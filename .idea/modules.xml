@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/../eurolos/.idea/eurolos.iml" filepath="$PROJECT_DIR$/../eurolos/.idea/eurolos.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/liberpay.iml" filepath="$PROJECT_DIR$/.idea/liberpay.iml" />
     </modules>
   </component>
